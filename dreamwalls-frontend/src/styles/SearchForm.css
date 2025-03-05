@@ -1,0 +1,217 @@
+.search-form-container {
+    background: url('../assets/images/interior1.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 86vh;
+    padding: 0.4rem;
+}
+
+.search-form-container .search-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.search-form-container .search-col .search-written {
+    display: flex;
+    justify-content: start;
+    align-content: start;
+    flex-direction: column;
+    margin-left: -10%;
+    h1{
+        font-size: 2rem;
+        color: var(--white);
+    }
+    h2{
+        font-size: 1.5rem;
+        color: var(--white);
+        align-self: end;
+        color: #fafabb;
+        font-weight: 600;
+        font-size: 4rem;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+    p{
+        font-size: 1.5rem;
+        color: var(--white);
+        margin-left : 4rem;
+        font-weight: 100;
+        font-size: 3rem;
+    }
+    button{
+        align-self: center;
+    }
+}
+.cssbuttons-io-button {
+    background: var(--light-bg);
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+    width: 40%;
+}
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+  
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+  
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+}
+  
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+  
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+}
+  
+.search-form-container .search-center {
+    background: linear-gradient(to bottom, #ecddb9, var(--light-bg  ));
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    width: 35rem;
+    max-width: 90%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+     
+.search-form-container .search-center form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.search-form-container .search-center form h3 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.search-form-container .search-center form h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--main-color);
+    border-radius: 2px;
+}
+
+.search-form-container .search-center form .search-flex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.search-form-container .search-center form .search-box {
+    position: relative;
+}
+
+.search-form-container .search-center form .search-box p {
+    font-size: 1.1rem;
+    color: #f1daaf;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.search-form-container .search-center form .search-box p span {
+    color: #ff4d4d;
+    font-size: 1.2rem;
+}
+
+.search-form-container .search-center form .search-box .search-input {
+    width: 100%;
+    border: 2px solid #eef2f7;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin-bottom: 0.3rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+.search-form-container .search-center form .search-box .search-input:focus {
+    border-color: var(--main-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(var(--main-color-rgb), 0.1);
+}
+
+.search-form-container .search-center form .search-box .search-input::placeholder {
+    color: #94a3b8;
+}
+
+/* Submit Button */
+.search-form-container .search-center form .search-btn {
+    background: linear-gradient(135deg, var(--light-bg), #eee273);
+    color: #f6ea9e  ;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 18rem;
+    transition: all 0.3s ease;
+    margin: 1rem auto 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.search-form-container .search-center form .search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--main-color-rgb), 0.3);
+}
+
+.search-form-container .search-center form .search-btn:active {
+    transform: translateY(0);
+}

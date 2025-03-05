@@ -1,0 +1,80 @@
+.sell-form-page {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sell-form-page .form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.sell-form-page h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form label styles */
+.sell-form-page label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+}
+
+.sell-form-page input[type="text"],
+.sell-form-page input[type="number"],
+.sell-form-page input[type="date"],
+.sell-form-page textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.3s ease-in-out;
+}
+
+.sell-form-page input[type="text"]:focus,
+.sell-form-page input[type="number"]:focus,
+.sell-form-page input[type="date"]:focus,
+.sell-form-page textarea:focus {
+    border: 1px solid #007bff;
+    outline: none;
+}
+
+/* Checkbox styles */
+.sell-form-page input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.sell-form-page textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Button styles */
+.sell-form-page button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+}
+
+.sell-form-page button:hover {
+    background-color: #0056b3;
+}

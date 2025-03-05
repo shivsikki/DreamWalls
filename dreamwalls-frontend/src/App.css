@@ -1,0 +1,15 @@
+:root {
+  --main-color:	#004040;
+  --light-color: #dae2e4;
+  --light-bg:	#013232;
+  --white:	#ceb178;
+  --black:	#004040;
+  --border:.1rem solid var(--light-color);
+  --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+ *{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+

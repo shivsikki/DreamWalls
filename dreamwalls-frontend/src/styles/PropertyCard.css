@@ -1,0 +1,85 @@
+.property-card {
+    border: 1px solid var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: calc(100% - 60px);
+    margin: 40px auto 20px auto;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-bg);
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.1);
+}
+
+.property-card:hover {
+    transform: scale(1.03);
+}
+
+.property-image img {
+    width: 60%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 20px;
+    border: 2px solid var(--white);
+}
+
+.property-details {
+    padding: 15px;
+}
+
+.property-details h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.property-details p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.property-specs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.spec {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.spec i {
+    margin-right: 5px;
+}
+
+.property-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.property-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.view-details-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: #2980b9;
+}
