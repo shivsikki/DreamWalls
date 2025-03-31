@@ -1,113 +1,122 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import PropertyListingCard from './PropertyListingCard';
 import "../styles/Listing.css";
-import img1 from "../assets/images/house-img-1.webp";
-import img2 from "../assets/images/house-img-2.webp";
-import img3 from "../assets/images/house-img-3.jpg";
 
 const Listings = () => {
-  const properties = [
-    {
-      img: img1,
-      type: ["house", "sale"],
-      admin: "J",
-      name: "John Wick",
-      date: "10-9-2023",
-      title: "Modern Flats and Apartments",
-      location: "Andheri, Mumbai, India - 401303",
-      beds: 3,
-      baths: 2,
-      area: "750 sqft",
-      link: "view_property.html",
-    },
-    {
-      img: img2,
-      type: ["flat", "sale"],
-      admin: "J",
-      name: "Ahir Vyas",
-      date: "10-4-2024",
-      title: "Modern Flats and Apartments",
-      location: "Andheri, Mumbai, India - 401303",
-      beds: 3,
-      baths: 2,
-      area: "750 sqft",
-      link: "view_property.html",
-    },
-    {
-      img: img3,
-      type: ["flat", "sale"],
-      admin: "J",
-      name: "Krutika singh",
-      date: "10-11-2022",
-      title: "Modern Flats and Apartments",
-      location: "Andheri, Mumbai, India - 401303",
-      beds: 3,
-      baths: 2,
-      area: "750 sqft",
-      link: "view_property.html",
-    },
-  ];
+  const [properties, setProperties] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const fetchPropertiesAndDetails = async () => {
+      try {
+        const propertiesResponse = await fetch('http://localhost:5000/api/v1/properties');
+        const propertiesData = await propertiesResponse.json();
+        console.log("Properties Data:", propertiesData);
+
+        const detailsResponse = await fetch('http://localhost:5000/api/v1/property-details');
+        const detailsData = await detailsResponse.json();
+        console.log("Details Data:", detailsData);
+
+        const propertiesArray = Array.isArray(propertiesData) ? propertiesData : 
+          (propertiesData.properties || propertiesData.data || []);
+        
+        const detailsArray = Array.isArray(detailsData) ? detailsData : 
+          (detailsData.propertyDetails || detailsData.data || []);
+
+        const combinedProperties = propertiesArray.map(property => {
+          const details = detailsArray.find(detail => detail.property_id === property.id) || {};
+          return {
+            ...property,
+            mainImage: details.mainImage?.url || null,
+            sideImages: details.sideImages?.map(img => img.url) || [],
+            buy_price: details.buy_price,
+            rent_price: details.rent_price,
+            type: [property.type || 'unknown', property.sale ? 'sale' : 'rent'],
+            date: property.day_of_listing ? new Date(property.day_of_listing).toLocaleDateString() : 'No date',
+            img: details.mainImage?.url || property.mainImage || 'default-image.jpg',
+            area: `${property.quantity || 0} sqft`
+          };
+        });
+
+        console.log("Combined Properties:", combinedProperties);
+        setProperties(combinedProperties);
+
+      } catch (error) {
+        console.error('Error fetching properties and details:', error);
+        setProperties([]);
+      }
+    };
+    fetchPropertiesAndDetails();
+  }, []);
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) => {
+        const newIndex = prevIndex === 0 ? properties.length - 1 : prevIndex - 1;
+        return Math.max(0, Math.min(newIndex, properties.length - 1));
+    });
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => {
+        const newIndex = prevIndex === properties.length - 1 ? 0 : prevIndex + 1;
+        return Math.max(0, Math.min(newIndex, properties.length - 1));
+    });
+  };
 
   return (
-      <section className="listings">
-        <h1 className="heading">Latest Listings</h1>
+    <section className="listings">
+      <h1 className="heading">Latest Listings</h1>
+      
+      <div className="carousel-container">
+        <button 
+          className="carousel-btn prev" 
+          onClick={handlePrevious}
+          disabled={properties.length <= 1}
+        >
+          <i className="fas fa-chevron-left"></i>
+        </button>
 
-        <div className="box-container">
-          {properties.map((property, index) => (
-              <div className="box" key={index}>
-                <div className="admin">
-                  <h3>{property.admin}</h3>
-                  <div>
-                    <p>{property.name}</p>
-                    <span>{property.date}</span>
-                  </div>
-                </div>
-                <div className="thumb">
-                  <p className="total-images">
-                    <i className="far fa-image"></i>
-                    <span>4</span>
-                  </p>
-                  <p className="type">
-                    {property.type.map((t, i) => (
-                        <span key={i}>{t}</span>
-                    ))}
-                  </p>
-                  <form action="" method="post" className="save">
-                    <button type="submit" name="save" className="far fa-heart"></button>
-                  </form>
-                  <img src={property.img} alt={property.title} />
-                </div>
-                <h3 className="name">{property.title}</h3>
-                <p className="location">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <span>{property.location}</span>
-                </p>
-                <div className="flex">
-                  <p>
-                    <i className="fas fa-bed"></i>
-                    <span>{property.beds}</span>
-                  </p>
-                  <p>
-                    <i className="fas fa-bath"></i>
-                    <span>{property.baths}</span>
-                  </p>
-                  <p>
-                    <i className="fas fa-maximize"></i>
-                    <span>{property.area}</span>
-                  </p>
-                </div>
-                <a href={property.link} className="btn">
-                  View Property
-                </a>
+        <div className="carousel-wrapper">
+          <div 
+            className="carousel-track" 
+            style={{
+              transform: `translateX(-${currentIndex * 33.5}%)`,
+              transition: 'transform 0.5s ease-in-out'
+            }}
+          >
+            {properties.map((property, index) => (
+              <div key={property._id || index} className="carousel-item">
+                <PropertyListingCard 
+                  property={{
+                    ...property,
+                    admin: property.owner?.charAt(0) || 'U',
+                    name: property.owner || 'Unknown',
+                    title: property.name || 'Untitled Property',
+                    beds: property.bedrooms || 0,
+                    baths: property.bathrooms || 0,
+                    location: property.location || 'Location not specified'
+                  }} 
+                />
               </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <div style={{ marginTop: "2rem", textAlign: "center" }}>
-          <a href="listings.html" className="inline-btn">
-            View All
-          </a>
+        <button 
+          className="carousel-btn next" 
+          onClick={handleNext}
+          disabled={properties.length <= 1}
+        >
+          <i className="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      {properties.length === 0 && (
+        <div className="no-properties">
+          <p>No properties found</p>
         </div>
-      </section>
+      )}
+    </section>
   );
 };
 

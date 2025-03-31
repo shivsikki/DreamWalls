@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+    
+.about-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-bg);
+}
+
+.about-wrapper .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/hall-img-1.webp');
+    background-size: cover;
+    background-position: center;
+    color: #fbe1b6;
+    text-align: center;
+    padding: 6rem 2rem;
+    margin-bottom: 3rem;
+}
+
+.about-wrapper .hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-wrapper .hero-section .tagline {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+.about-wrapper .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-wrapper .mission-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.about-wrapper .mission-section h2 {
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.about-wrapper .mission-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f39c12;
+    border-radius: 2px;
+}
+
+.about-wrapper .mission-section p {
+    font-size: 1.2rem;
+    color: var(--white);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.about-wrapper .stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.about-wrapper .stat-card {
+    background: linear-gradient(135deg, #73818f, #34495e);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 12px;
+    color: white;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-wrapper .stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-wrapper .stat-card i {
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin-bottom: 1rem;
+}
+
+.about-wrapper .stat-card h3 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    font-weight: 700;
+}
+
+.about-wrapper .stat-card p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.about-wrapper .team-section {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.about-wrapper .team-section h2 {
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.about-wrapper .team-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f39c12;
+    border-radius: 2px;
+}
+
+.about-wrapper .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+}
+
+.about-wrapper .team-member {
+    background: linear-gradient(135deg, #73818f, #34495e);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-wrapper .team-member:hover {
+    transform: translateY(-5px);
+}
+
+.about-wrapper .member-img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #f39c12;
+}
+
+.about-wrapper .member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-wrapper .team-member h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-wrapper .team-member p {
+    color: #f39c12;
+    font-size: 1.1rem;
+}
+
+.about-wrapper .values-section {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.about-wrapper .values-section h2 {
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.about-wrapper .values-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f39c12;
+    border-radius: 2px;
+}
+
+.about-wrapper .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.about-wrapper .value-card {
+    background: linear-gradient(135deg, #73818f, #34495e);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-wrapper .value-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-wrapper .value-card i {
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin-bottom: 1.5rem;
+}
+
+.about-wrapper .value-card h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-wrapper .value-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}

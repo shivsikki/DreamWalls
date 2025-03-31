@@ -1,166 +1,72 @@
 .listings {
-    padding: 2rem;
+    padding: 40px 20px;
     background-color: var(--light-bg);
 }
 
-.listings .heading {
-    font-size: 2rem;
+.heading {
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--light-color);
-    text-transform: capitalize;
+    font-size: 2.5em;
+    color: #f0f6f5;
+    margin-bottom: 40px;
 }
 
-.listings .box-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-}
-
-.listings .box {
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    width: 360px;
-    text-align: center;
-}
-
-.listings .admin {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-}
-
-.listings .admin h3 {
-    background-color: var(--black);
-    color: var(--light-color);
-    padding: 8px;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.listings .thumb {
+.carousel-container {
     position: relative;
+    max-width: 1250px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 60px;
 }
 
-.listings .thumb img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
+.carousel-wrapper {
+    overflow: hidden;
+    padding: 20px 0;
+    width: 100%;  
 }
 
-.listings .total-images,
-.listings .type,
-.listings .save {
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s ease-in-out;
+    background: transparent;
+}
+
+.carousel-item {
+    flex: 0 0 350px;
+    min-width: 350px;
+    padding: 10px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-btn {
     position: absolute;
-    top: 10px;
-    background: rgba(0, 0, 0, 0.7);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #dadcbf;
     color: white;
-    padding: 10px 8px;
-    border-radius: 5px;
-}
-
-.listings .total-images {
-    left: 10px;
-}
-
-.listings .type {
-    right: 10px;
-}
-
-.listings .type span {
-    margin-left: 5px;
-    background-color: var(--black);
-    padding: 3px 6px;
-    border-radius: 4px;
-}
-
-.listings .save {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    z-index: 2;
-    margin-top: 9rem;
-}
-
-.listings .save button {
-    background: none;
     border: none;
-    color: white;
-    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
     cursor: pointer;
-}
-
-
-.listings .name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0.8rem 0;
-}
-
-.listings .location {
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    color: var(--light-color);
-    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.listings .flex {
-    display: flex;
-    justify-content: space-around;
-    margin: 1rem 0;
-    background-color: var(--black);
-    padding: 2px;
-    border-radius: 5px;
+.carousel-btn.prev {
+    left: 5px;
 }
 
-.listings .flex p {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--light-color);
+.carousel-btn.next {
+    right: 5px;
 }
 
-.listings .flex i {
-    color: var(--white);
-}
-
-.listings .btn {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #4e493c;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-top: 1rem;
-}
-
-.listings .inline-btn {
-    text-decoration: none;
-    color: white;
-    background-color: var(--white);
-    padding: 10px 15px;
-    border-radius: 5px;
-}
-.listings .btn:hover {
-    background-color: #373124;
-    transition: 0.3s ease;
-}
-.listings .inline-btn:hover {
-    background-color:  #373124;
-    transition: 0.3s ease;
+.carousel-btn:hover {
+    background: #00695c;
+    transform: translateY(-50%) scale(1.1);
+    transition: all 0.3s ease;
 }

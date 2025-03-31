@@ -1,0 +1,148 @@
+.saved-properties {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-bg);
+}
+
+.saved-properties-container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.saved-properties h1 {
+    margin-bottom: 2rem;
+    color: #f5f5f5;
+    margin-left: -3%;   
+}
+
+.saved-properties h1::after {
+    content: '';
+    position: absolute;
+    bottom: 76%;
+    left: 9.5%;
+    width: 80px;
+    height: 3px;
+    background: #f39c12;
+    border-radius: 2px;
+}
+
+.no-saved-properties {
+    text-align: center;
+    padding: 3rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.no-saved-properties h3 {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.no-saved-properties p {
+    color: #888;
+}
+
+.saved-properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(94vw, 0fr)); 
+    margin-left: -9%;
+}
+
+.action-btn.saved {
+    background: rgba(255, 68, 68, 0.1);
+}
+
+/* Animation for property cards */
+.saved-properties-grid .property-card {
+    animation: fadeIn 0.5s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.saved-properties-grid .property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+/* Error state */
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #ff4444;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .saved-properties-container {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+
+    .saved-properties-container h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .saved-properties-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .saved-properties-container h1 {
+        font-size: 1.75rem;
+    }
+
+    .no-saved-properties {
+        padding: 2rem 1rem;
+    }
+
+    .no-saved-properties h3 {
+        font-size: 1.25rem;
+    }
+
+    .no-saved-properties p {
+        font-size: 1rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .saved-properties-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .saved-properties-grid {
+        gap: 1rem;
+    }
+
+    .property-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+} 

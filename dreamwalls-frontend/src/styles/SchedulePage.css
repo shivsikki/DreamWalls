@@ -1,0 +1,399 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.schedule-page {
+    background-color: #e3eef9;
+    min-height: 100vh;
+    padding: 0rem 0;
+}
+
+.schedule-page .schedule-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header Section */
+.schedule-page .schedule-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.schedule-page .schedule-header h1 {
+    font-size: 2.5rem;
+    color:  #2c3e50;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.schedule-page .schedule-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 78%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 2px;
+}
+
+.schedule-page .schedule-header p {
+    color: #64748b;
+    font-size: 1.125rem;
+}
+
+/* Main Content Layout */
+.schedule-page .schedule-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Property Preview Section */
+.schedule-page .property-preview {
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.schedule-page .property-preview h2 {
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.schedule-page .property-main-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-page .property-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.schedule-page .property-main-image:hover img {
+    transform: scale(1.03);
+}
+
+.schedule-page .property-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.schedule-page .gallery-thumb {
+    aspect-ratio: 1;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.schedule-page .gallery-thumb::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(59, 130, 246, 0.1);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.schedule-page .gallery-thumb:hover::after {
+    opacity: 1;
+}
+
+.schedule-page .gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+.schedule-page .gallery-thumb:hover img {
+    transform: scale(1.05);
+}
+
+.schedule-page .gallery-thumb.active {
+    border-color: #3b82f6;
+}
+
+.schedule-page .gallery-thumb.active::after {
+    opacity: 1;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.schedule-page .property-info {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.schedule-page .property-info h3 {
+    color: #1e293b;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.schedule-page .property-info p {
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.schedule-page .property-info .owner-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.schedule-page .property-info .owner-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid #e2e8f0;
+}
+
+.schedule-page .property-info .owner-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.schedule-page .property-info .owner-details {
+    flex: 1;
+}
+
+.schedule-page .property-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    color: #64748b;
+}
+
+.schedule-page .property-info .info-item i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+}
+
+.schedule-page .scheduling-form {
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.schedule-page .scheduling-form h2 {
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.schedule-page .form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.schedule-page .form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: #64748b;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    font-size: 0.875rem;
+}
+
+.schedule-page .form-group input,
+.schedule-page .form-group select,
+.schedule-page .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.schedule-page .form-group input:focus,
+.schedule-page .form-group select:focus,
+.schedule-page .form-group textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+.schedule-page .form-group input:focus ~ label,
+.schedule-page .form-group input:not(:placeholder-shown) ~ label {
+    transform: translateY(-2.25rem) scale(0.85);
+    background: #ffffff;
+    padding: 0 0.5rem;
+    color: #3b82f6;
+}
+
+.schedule-page .form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.schedule-page .date-label {
+    transform: translateY(-2.25rem) scale(0.85);
+    background: #ffffff;
+    padding: 0 0.5rem;
+}
+
+.schedule-page .submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #3b82f6;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.schedule-page .submit-btn:hover {
+    background: #2563eb;
+}
+
+.schedule-page .submit-btn:active {
+    transform: scale(0.98);
+}
+
+.schedule-page .submit-btn.loading {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+.schedule-page .submit-btn.success {
+    background: #22c55e;
+}
+
+.schedule-page .submit-btn.error {
+    background: #ef4444;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.schedule-page .submit-btn.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* Add these styles for error messages */
+.schedule-page .form-group .error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.schedule-page .form-group input.error,
+.schedule-page .form-group select.error {
+    border-color: #ef4444;
+}
+
+.schedule-page .form-group input.error:focus,
+.schedule-page .form-group select.error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .schedule-page .schedule-container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .schedule-page {
+        padding: 1rem 0;
+    }
+
+    .schedule-page .schedule-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .schedule-page .schedule-header h1 {
+        font-size: 2rem;
+    }
+
+    .schedule-page .property-main-image {
+        height: 300px;
+    }
+
+    .schedule-page .property-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-page .schedule-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .schedule-page .property-preview,
+    .schedule-page .scheduling-form {
+        padding: 1.5rem;
+    }
+
+    .schedule-page .property-info .owner-section {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .schedule-page .property-info .owner-photo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .schedule-page .property-main-image {
+        height: 250px;
+    }
+
+    .schedule-page .property-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+}

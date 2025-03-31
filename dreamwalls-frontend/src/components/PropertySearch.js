@@ -1,53 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select } from 'antd';
-import image from '../assets/images/interior1.jpg';
 
 const PropertySearch = ({ onPropertySelect }) => {
-    const [searchValue, setSearchValue] = useState('');
     const [properties, setProperties] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    const handleSearch = async (value) => {
-        setSearchValue(value);
-        // Sample data with all required properties
-        setProperties([
-            { 
-                id: '1', 
-                title: 'Sample Property 1',
-                images: [image],
-                price: 500000,
-                area: 2000,
-                bedrooms: 3,
-                bathrooms: 2,
-                location: 'Sample Location 1'
-            },
-            { 
-                id: '2', 
-                title: 'Sample Property 2',
-                images: [image],
-                price: 750000,
-                area: 2500,
-                bedrooms: 4,
-                bathrooms: 3,
-                location: 'Sample Location 2'
+    useEffect(() => {
+        const fetchProperties = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch('http://localhost:5000/api/v1/properties');
+                const data = await response.json();
+                const options = data.map(property => ({
+                    value: property.id,
+                    label: property.name,
+                    property: property
+                }));
+                setProperties(options);
+            } catch (error) {
+                console.error('Error fetching properties:', error);
             }
-        ]);
+            setLoading(false);
+        };
+
+        fetchProperties();
+    }, []);
+
+    const handleSelect = (value, option) => {
+        onPropertySelect(option.property);
     };
 
     return (
         <Select
             showSearch
-            value={searchValue}
             placeholder="Search for a property"
-            onSearch={handleSearch}
-            onChange={(value) => {
-                const selectedProperty = properties.find(p => p.id === value);
-                onPropertySelect(selectedProperty);
-            }}
-            options={properties.map(property => ({
-                value: property.id,
-                label: property.title
-            }))}
+            loading={loading}
             style={{ width: '100%' }}
+            options={properties}
+            onChange={handleSelect}
+            filterOption={(input, option) =>
+                option.label.toLowerCase().includes(input.toLowerCase())
+            }
         />
     );
 };

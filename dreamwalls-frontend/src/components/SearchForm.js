@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/SearchForm.css";
 
 const SearchForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     location: "",
     type: "flat",
@@ -16,12 +18,29 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you can integrate API calls or navigation for search resul  ts
+    
+    // Create query string from form data
+    const queryParams = new URLSearchParams({
+      location: formData.location,
+      type: formData.type,
+      bedrooms: formData.bhk,
+      minPrice: formData.minimum,
+      maxPrice: formData.maximum
+    }).toString();
+
+    // Navigate to property listing with filters
+    navigate(`/properties?${queryParams}`);
   };
 
-  const scrolltolisting = (e) =>{
-
+  const scrollToListing = () => {
+    const listingSection = document.querySelector('.listings');
+    if (listingSection) {
+      listingSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    }
   };
 
   return (
@@ -31,9 +50,12 @@ const SearchForm = () => {
           <h1>Buy, Sell, Rent property as u wish...</h1>
           <h2>Here, For FREE</h2>
           <p>Its your home, your Choice</p>
-          <button className="cssbuttons-io-button">
+          <button 
+            className="search-get-started-btn"
+            onClick={scrollToListing}
+          >
             Get started
-            <div className="icon">
+            <div className="search-btn-icon">
               <svg
                 height="24"
                 width="24"
@@ -90,7 +112,7 @@ const SearchForm = () => {
               <div className="search-box">
                 <p>Minimum Budget <span>*</span></p>
                 <select name="minimum" className="search-input" required value={formData.minimum} onChange={handleChange}>
-                  {[5000000, 10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000, 150000000, 200000000].map((value) => (
+                  {[1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000, 150000000, 200000000].map((value) => (
                     <option key={value} value={value}>{value >= 10000000 ? `${value / 10000000} Cr` : `${value / 100000} lac`}</option>
                   ))}
                 </select>
@@ -99,7 +121,7 @@ const SearchForm = () => {
               <div className="search-box">
                 <p>Maximum Budget <span>*</span></p>
                 <select name="maximum" className="search-input" required value={formData.maximum} onChange={handleChange}>
-                  {[5000000, 10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000, 150000000, 200000000].map((value) => (
+                  {[1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 10000000, 20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000, 90000000, 100000000, 150000000, 200000000].map((value) => (
                     <option key={value} value={value}>{value >= 10000000 ? `${value / 10000000} Cr` : `${value / 100000} lac`}</option>
                   ))}
                 </select>
